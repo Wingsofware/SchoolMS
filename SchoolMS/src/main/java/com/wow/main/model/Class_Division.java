@@ -1,10 +1,13 @@
 package com.wow.main.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Embeddable;
 
 @Embeddable
-public class Class_Division {
+public class Class_Division implements Serializable{
 
+	private static final long serialVersionUID = 1L;
 	private String cname;
 	private String division;
 	
