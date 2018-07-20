@@ -2,6 +2,7 @@ package com.wow.main.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Student {
@@ -23,6 +24,11 @@ public class Student {
 	private String religion;
 	private String caste;
 	private String category;
+	private String division;
+	@OneToOne
+	private Classes classes;
+	
+	
 	public long getSid() {
 		return sid;
 	}
@@ -119,12 +125,17 @@ public class Student {
 	public void setCategory(String category) {
 		this.category = category;
 	}
-	@Override
-	public String toString() {
-		return "Student [sid=" + sid + ", admissionno=" + admissionno + ", admissiondate=" + admissiondate + ", name="
-				+ name + ", gender=" + gender + ", dob=" + dob + ", father=" + father + ", mother=" + mother
-				+ ", address=" + address + ", city=" + city + ", distance=" + distance + ", bus=" + bus + ", contactno="
-				+ contactno + ", religion=" + religion + ", caste=" + caste + ", category=" + category + "]";
+	public String getDivision() {
+		return division;
+	}
+	public void setDivision(String division) {
+		this.division = division;
+	}
+	public Classes getClasses() {
+		return classes;
+	}
+	public void setClasses(Classes classes) {
+		this.classes = classes;
 	}
 
 }
