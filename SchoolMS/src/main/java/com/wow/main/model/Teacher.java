@@ -7,7 +7,7 @@ import javax.persistence.Id;
 public class Teacher {
 	
 	@Id
-	private int tid;
+	private int eid;
 	private String name;
 	private String address;
 	private String huspare;
@@ -18,14 +18,17 @@ public class Teacher {
 	private double salary;
 	private String doj;
 	private String dor;
+	private double hra;
+	private double pf;
+	private double medical;
+	private double allowance;
 	//Termination T, Resignation R
-	private String status;
-	
-	public int getTid() {
-		return tid;
+	private boolean status;
+	public int getEid() {
+		return eid;
 	}
-	public void setTid(int tid) {
-		this.tid = tid;
+	public void setEid(int eid) {
+		this.eid = eid;
 	}
 	public String getName() {
 		return name;
@@ -87,18 +90,43 @@ public class Teacher {
 	public void setDor(String dor) {
 		this.dor = dor;
 	}
-	public String getStatus() {
+	public double getHra() {
+		return hra;
+	}
+	public void setHra(double hra) {
+		this.hra = hra;
+	}
+	public double getPf() {
+		return pf;
+	}
+	public void setPf(double pf) {
+		this.pf = pf;
+	}
+	public double getMedical() {
+		return medical;
+	}
+	public void setMedical(double medical) {
+		this.medical = medical;
+	}
+	public double getAllowance() {
+		return allowance;
+	}
+	public void setAllowance(double allowance) {
+		this.allowance = allowance;
+	}
+	public boolean isStatus() {
 		return status;
 	}
-	public void setStatus(String status) {
+	public void setStatus(boolean status) {
 		this.status = status;
 	}
 	@Override
 	public String toString() {
-		return "Teacher [tid=" + tid + ", name=" + name + ", address=" + address + ", huspare=" + huspare + ", mobile="
+		return "Teacher [eid=" + eid + ", name=" + name + ", address=" + address + ", huspare=" + huspare + ", mobile="
 				+ mobile + ", contact=" + contact + ", email=" + email + ", aadhar=" + aadhar + ", salary=" + salary
-				+ ", doj=" + doj + ", dor=" + dor + ", status=" + status + "]";
+				+ ", doj=" + doj + ", dor=" + dor + ", hra=" + hra + ", pf=" + pf + ", medical=" + medical
+				+ ", allowance=" + allowance + ", status=" + status + "]";
 	}
 	
-
+	
 }

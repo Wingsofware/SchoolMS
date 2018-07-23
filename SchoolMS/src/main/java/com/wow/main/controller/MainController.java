@@ -2,12 +2,16 @@ package com.wow.main.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.wow.main.dao.ClassRepo;
 import com.wow.main.dao.StudentRepo;
 import com.wow.main.dao.TeacherRepo;
+import com.wow.main.model.Class_Division;
+import com.wow.main.model.Classes;
 import com.wow.main.model.Student;
 import com.wow.main.model.Teacher;
 
@@ -16,24 +20,31 @@ public class MainController {
 	
 ////STUDENT CONTROLLER STARTS//////
 	@Autowired
-	StudentRepo srepo;
+	StudentRepo studentRepo;
+	@Autowired
+	ClassRepo classRepo;
 	
 	@RequestMapping("/addStudent")
-	public ModelAndView addStudent(Student sd)
+	public ModelAndView addStudent(@RequestParam("classes_cname") String cname,@RequestParam("classes_division") String division,@ModelAttribute Student student)
 	{
 		ModelAndView mv=new ModelAndView();
-		srepo.save(sd);
-		mv.addObject("student", sd);
+		Class_Division cd=new Class_Division();
+		cd.setCname(cname);
+		cd.setDivision(division);
+		Classes cl=classRepo.getOne(cd);
+		student.setClasses(cl);
+		studentRepo.save(student);
+		mv.addObject("student", student);
 		mv.setViewName("studentview");
 		return mv;
 	}
 	
 	@RequestMapping("/updateStudent")
-	public ModelAndView updateStudent(Student sd)
+	public ModelAndView updateStudent(Student student)
 	{
 		ModelAndView mv=new ModelAndView();
-		srepo.save(sd);
-		mv.addObject("student", sd);
+		studentRepo.save(student);
+		mv.addObject("student", student);
 		mv.setViewName("studentview");
 		return mv;
 	}
@@ -42,7 +53,7 @@ public class MainController {
 	public ModelAndView getStudent(@RequestParam("adno") long adno)
 	{
 		ModelAndView mv=new ModelAndView();
-		mv.addObject("student", (Student) srepo.findByAdmissionno(adno));
+		mv.addObject("student", (Student) studentRepo.findByAdmissionno(adno));
 		mv.setViewName("studentview");
 		return mv;
 	}
@@ -51,32 +62,32 @@ public class MainController {
 	public ModelAndView getallStudents()
 	{
 		ModelAndView mv=new ModelAndView();
-		mv.addObject("students", srepo.findAll());
+		mv.addObject("students", studentRepo.findAll());
 		mv.setViewName("studentsview");
 		return mv;
 	}
 ////STUDENT CONTROLLER ENDS//////
 	
-////STUDENT CONTROLLER STARTS//////
+////TEACHER CONTROLLER STARTS//////
 	@Autowired
-	TeacherRepo trepo;
+	TeacherRepo teacherRepo;
 	
 	@RequestMapping("/addTeacher")
-	public ModelAndView addTeacher(Teacher tr)
+	public ModelAndView addTeacher(Teacher teacher)
 	{
 		ModelAndView mv=new ModelAndView();
-		trepo.save(tr);
-		mv.addObject("teacher", tr);
+		teacherRepo.save(teacher);
+		mv.addObject("teacher", teacher);
 		mv.setViewName("teacherview");
 		return mv;
 	}
 	
 	@RequestMapping("/updateTeacher")
-	public ModelAndView updateTeacher(Teacher tr)
+	public ModelAndView updateTeacher(Teacher teacher)
 	{
 		ModelAndView mv=new ModelAndView();
-		trepo.save(tr);
-		mv.addObject("teacher", tr);
+		teacherRepo.save(teacher);
+		mv.addObject("teacher", teacher);
 		mv.setViewName("teacherview");
 		return mv;
 	}
@@ -85,7 +96,7 @@ public class MainController {
 	public ModelAndView getTeacher(@RequestParam("tid") int tid)
 	{
 		ModelAndView mv=new ModelAndView();
-		mv.addObject("teacher", trepo.findById(tid));
+		mv.addObject("teacher", teacherRepo.findById(tid));
 		mv.setViewName("teacherview");
 		return mv;
 	}
@@ -94,12 +105,21 @@ public class MainController {
 	public ModelAndView getallTeachers()
 	{
 		ModelAndView mv=new ModelAndView();
-		mv.addObject("teachers", trepo.findAll());
+		mv.addObject("teachers", teacherRepo.findAll());
 		mv.setViewName("teachersview");
 		return mv;
 	}
-////STUDENT CONTROLLER ENDS//////
+////TEACHER CONTROLLER ENDS//////
+
+////CLASS CONTROLLER ENDS//////
 	
+	@RequestMapping("/addClass")
+	public ModelAndView addClass(Classes classes)
+	{
+		ModelAndView mv=new ModelAndView();
+		classRepo.save(classes);
+		return mv;
+	}
 	
 	
 }

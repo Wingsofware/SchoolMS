@@ -12,21 +12,28 @@ public class PageController {
 		return "login";
 	}
 	
-	@RequestMapping("home")
+	@RequestMapping("home.htm")
 	public String Home()
 	{
 		return "home";
 	}
 	
-	@RequestMapping("/add_school_view")
-	public String AddSchollView()
+	@RequestMapping("/add_student.htm")
+	public String AddStudentView()
 	{
-		return "add_school_view";
+		return "addstudent";
 	}
 
-	@RequestMapping("/add_class_view")
+	@RequestMapping("/add_teacher.htm")
+	public String AddTeacherView()
+	{
+		return "addteacher";
+	}
+	
+	@RequestMapping("/add_class.htm")
 	public String AddClassView()
 	{
-		return "add_class_view";
+		return "addclass";
 	}
+	
 }

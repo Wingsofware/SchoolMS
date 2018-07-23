@@ -17,18 +17,15 @@ public class Student {
 	private String father;
 	private String mother;
 	private String address;
-	private String city;
-	private String distance;
-	private String bus;
+	private double distance;
+	private boolean bus;
 	private String contactno;
+	private String mobileno;
 	private String religion;
 	private String caste;
 	private String category;
-	private String division;
 	@OneToOne
 	private Classes classes;
-	
-	
 	public long getSid() {
 		return sid;
 	}
@@ -83,22 +80,16 @@ public class Student {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public String getCity() {
-		return city;
-	}
-	public void setCity(String city) {
-		this.city = city;
-	}
-	public String getDistance() {
+	public double getDistance() {
 		return distance;
 	}
-	public void setDistance(String distance) {
+	public void setDistance(double distance) {
 		this.distance = distance;
 	}
-	public String getBus() {
+	public boolean isBus() {
 		return bus;
 	}
-	public void setBus(String bus) {
+	public void setBus(boolean bus) {
 		this.bus = bus;
 	}
 	public String getContactno() {
@@ -106,6 +97,12 @@ public class Student {
 	}
 	public void setContactno(String contactno) {
 		this.contactno = contactno;
+	}
+	public String getMobileno() {
+		return mobileno;
+	}
+	public void setMobileno(String mobileno) {
+		this.mobileno = mobileno;
 	}
 	public String getReligion() {
 		return religion;
@@ -125,17 +122,11 @@ public class Student {
 	public void setCategory(String category) {
 		this.category = category;
 	}
-	public String getDivision() {
-		return division;
-	}
-	public void setDivision(String division) {
-		this.division = division;
-	}
 	public Classes getClasses() {
 		return classes;
 	}
 	public void setClasses(Classes classes) {
 		this.classes = classes;
 	}
-
+	
 }
