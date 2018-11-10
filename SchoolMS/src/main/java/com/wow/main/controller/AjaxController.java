@@ -16,19 +16,18 @@ public class AjaxController {
 
 	@Autowired
 	StudentRepo srepo;
-	
-	@RequestMapping("/getallStudentsAjax")
-	public List<Student> addallStudentsAjax()
+	@Autowired
+	TeacherRepo trepo;
+		
+	@RequestMapping("/getAllStudentsAjax")
+	public List<Student> addAllStudentsAjax()
 	{
 		List<Student> sd= srepo.findAll();
 		return sd;
 	}
 	
-	@Autowired
-	TeacherRepo trepo;
-	
-	@RequestMapping("/getallTeachersAjax")
-	public List<Teacher> getallTeachersAjax()
+	@RequestMapping("/getAllTeachersAjax")
+	public List<Teacher> getAllTeachersAjax()
 	{
 		List<Teacher> tr= trepo.findAll();
 		return tr;

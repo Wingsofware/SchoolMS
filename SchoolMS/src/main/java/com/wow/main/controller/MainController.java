@@ -59,7 +59,7 @@ public class MainController {
 	}
 	
 	@RequestMapping("/getallStudents")
-	public ModelAndView getallStudents()
+	public ModelAndView getAllStudents()
 	{
 		ModelAndView mv=new ModelAndView();
 		mv.addObject("students", studentRepo.findAll());
