@@ -8,16 +8,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.school.main.entity.Student;
 import com.school.main.entity.Teacher;
-import com.school.main.repository.StudentRepo;
-import com.school.main.repository.TeacherRepo;
+import com.school.main.repository.StudentRepository;
+import com.school.main.repository.TeacherRepository;
 
 @RestController
 public class AjaxController {
 
 	@Autowired
-	StudentRepo srepo;
+	StudentRepository srepo;
 	@Autowired
-	TeacherRepo trepo;
+	TeacherRepository trepo;
 		
 	@RequestMapping("/getAllStudentsAjax")
 	public List<Student> addAllStudentsAjax()

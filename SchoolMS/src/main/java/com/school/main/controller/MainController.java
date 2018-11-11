@@ -11,19 +11,34 @@ import com.school.main.entity.Class_Division;
 import com.school.main.entity.Classes;
 import com.school.main.entity.Student;
 import com.school.main.entity.Teacher;
-import com.school.main.repository.ClassRepo;
-import com.school.main.repository.StudentRepo;
-import com.school.main.repository.TeacherRepo;
+import com.school.main.repository.ClassRepository;
+import com.school.main.repository.StudentRepository;
+import com.school.main.repository.TeacherRepository;
 
+// TODO: Auto-generated Javadoc
+/**
+ * The Class MainController.
+ */
 @Controller
 public class MainController {
 	
+/** The student repo. */
 ////STUDENT CONTROLLER STARTS//////
 	@Autowired
-	StudentRepo studentRepo;
-	@Autowired
-	ClassRepo classRepo;
+	StudentRepository studentRepo;
 	
+	/** The class repo. */
+	@Autowired
+	ClassRepository classRepo;
+	
+	/**
+	 * Adds the student.
+	 *
+	 * @param cname the cname
+	 * @param division the division
+	 * @param student the student
+	 * @return the model and view
+	 */
 	@RequestMapping("/addStudent")
 	public ModelAndView addStudent(@RequestParam("classes_cname") String cname,@RequestParam("classes_division") String division,@ModelAttribute Student student)
 	{
@@ -39,6 +54,12 @@ public class MainController {
 		return mv;
 	}
 	
+	/**
+	 * Update student.
+	 *
+	 * @param student the student
+	 * @return the model and view
+	 */
 	@RequestMapping("/updateStudent")
 	public ModelAndView updateStudent(Student student)
 	{
@@ -49,6 +70,12 @@ public class MainController {
 		return mv;
 	}
 	
+	/**
+	 * Gets the student.
+	 *
+	 * @param adno the adno
+	 * @return the student
+	 */
 	@RequestMapping("/getStudent")
 	public ModelAndView getStudent(@RequestParam("adno") long adno)
 	{
@@ -58,6 +85,11 @@ public class MainController {
 		return mv;
 	}
 	
+	/**
+	 * Gets the all students.
+	 *
+	 * @return the all students
+	 */
 	@RequestMapping("/getallStudents")
 	public ModelAndView getAllStudents()
 	{
@@ -68,10 +100,17 @@ public class MainController {
 	}
 ////STUDENT CONTROLLER ENDS//////
 	
+/** The teacher repo. */
 ////TEACHER CONTROLLER STARTS//////
 	@Autowired
-	TeacherRepo teacherRepo;
+	TeacherRepository teacherRepo;
 	
+	/**
+	 * Adds the teacher.
+	 *
+	 * @param teacher the teacher
+	 * @return the model and view
+	 */
 	@RequestMapping("/addTeacher")
 	public ModelAndView addTeacher(Teacher teacher)
 	{
@@ -82,6 +121,12 @@ public class MainController {
 		return mv;
 	}
 	
+	/**
+	 * Update teacher.
+	 *
+	 * @param teacher the teacher
+	 * @return the model and view
+	 */
 	@RequestMapping("/updateTeacher")
 	public ModelAndView updateTeacher(Teacher teacher)
 	{
@@ -92,6 +137,12 @@ public class MainController {
 		return mv;
 	}
 	
+	/**
+	 * Gets the teacher.
+	 *
+	 * @param tid the tid
+	 * @return the teacher
+	 */
 	@RequestMapping("/getTeacher")
 	public ModelAndView getTeacher(@RequestParam("tid") int tid)
 	{
@@ -101,6 +152,11 @@ public class MainController {
 		return mv;
 	}
 	
+	/**
+	 * Gets the all teachers.
+	 *
+	 * @return the all teachers
+	 */
 	@RequestMapping("/getallTeachers")
 	public ModelAndView getallTeachers()
 	{
@@ -113,7 +169,13 @@ public class MainController {
 
 ////CLASS CONTROLLER ENDS//////
 	
-	@RequestMapping("/addClass")
+	/**
+ * Adds the class.
+ *
+ * @param classes the classes
+ * @return the model and view
+ */
+@RequestMapping("/addClass")
 	public ModelAndView addClass(Classes classes)
 	{
 		ModelAndView mv=new ModelAndView();
