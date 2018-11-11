@@ -15,6 +15,7 @@ import com.school.main.repository.ClassRepository;
 import com.school.main.repository.StudentRepository;
 import com.school.main.repository.TeacherRepository;
 
+
 // TODO: Auto-generated Javadoc
 /**
  * The Class MainController.
@@ -22,14 +23,15 @@ import com.school.main.repository.TeacherRepository;
 @Controller
 public class MainController {
 	
-/** The student repo. */
-////STUDENT CONTROLLER STARTS//////
 	@Autowired
-	StudentRepository studentRepo;
+	StudentRepository studentRepository;
 	
-	/** The class repo. */
 	@Autowired
-	ClassRepository classRepo;
+	ClassRepository classRepository;
+	
+	@Autowired
+	TeacherRepository teacherRepository;
+
 	
 	/**
 	 * Adds the student.
@@ -46,9 +48,9 @@ public class MainController {
 		Class_Division cd=new Class_Division();
 		cd.setCname(cname);
 		cd.setDivision(division);
-		Classes cl=classRepo.getOne(cd);
+		Classes cl=classRepository.getOne(cd);
 		student.setClasses(cl);
-		studentRepo.save(student);
+		studentRepository.save(student);
 		mv.addObject("student", student);
 		mv.setViewName("studentview");
 		return mv;
@@ -64,7 +66,7 @@ public class MainController {
 	public ModelAndView updateStudent(Student student)
 	{
 		ModelAndView mv=new ModelAndView();
-		studentRepo.save(student);
+		studentRepository.save(student);
 		mv.addObject("student", student);
 		mv.setViewName("studentview");
 		return mv;
@@ -80,7 +82,7 @@ public class MainController {
 	public ModelAndView getStudent(@RequestParam("adno") long adno)
 	{
 		ModelAndView mv=new ModelAndView();
-		mv.addObject("student", (Student) studentRepo.findByAdmissionno(adno));
+		mv.addObject("student", (Student) studentRepository.findByAdmissionno(adno));
 		mv.setViewName("studentview");
 		return mv;
 	}
@@ -94,16 +96,11 @@ public class MainController {
 	public ModelAndView getAllStudents()
 	{
 		ModelAndView mv=new ModelAndView();
-		mv.addObject("students", studentRepo.findAll());
+		mv.addObject("students", studentRepository.findAll());
 		mv.setViewName("studentsview");
 		return mv;
 	}
 ////STUDENT CONTROLLER ENDS//////
-	
-/** The teacher repo. */
-////TEACHER CONTROLLER STARTS//////
-	@Autowired
-	TeacherRepository teacherRepo;
 	
 	/**
 	 * Adds the teacher.
@@ -115,7 +112,7 @@ public class MainController {
 	public ModelAndView addTeacher(Teacher teacher)
 	{
 		ModelAndView mv=new ModelAndView();
-		teacherRepo.save(teacher);
+		teacherRepository.save(teacher);
 		mv.addObject("teacher", teacher);
 		mv.setViewName("teacherview");
 		return mv;
@@ -131,7 +128,7 @@ public class MainController {
 	public ModelAndView updateTeacher(Teacher teacher)
 	{
 		ModelAndView mv=new ModelAndView();
-		teacherRepo.save(teacher);
+		teacherRepository.save(teacher);
 		mv.addObject("teacher", teacher);
 		mv.setViewName("teacherview");
 		return mv;
@@ -147,7 +144,7 @@ public class MainController {
 	public ModelAndView getTeacher(@RequestParam("tid") int tid)
 	{
 		ModelAndView mv=new ModelAndView();
-		mv.addObject("teacher", teacherRepo.findById(tid));
+		mv.addObject("teacher", teacherRepository.findById(tid));
 		mv.setViewName("teacherview");
 		return mv;
 	}
@@ -161,7 +158,7 @@ public class MainController {
 	public ModelAndView getallTeachers()
 	{
 		ModelAndView mv=new ModelAndView();
-		mv.addObject("teachers", teacherRepo.findAll());
+		mv.addObject("teachers", teacherRepository.findAll());
 		mv.setViewName("teachersview");
 		return mv;
 	}
@@ -179,7 +176,7 @@ public class MainController {
 	public ModelAndView addClass(Classes classes)
 	{
 		ModelAndView mv=new ModelAndView();
-		classRepo.save(classes);
+		classRepository.save(classes);
 		return mv;
 	}
 	
