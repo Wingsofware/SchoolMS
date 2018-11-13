@@ -8,8 +8,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
 
 @Entity
+@Table(name="STUDENT")
 public class Student {
 	
 	@Id
@@ -47,8 +49,8 @@ public class Student {
 	@Column(name="CATEGORY")
 	private String category;
 	@OneToOne
-	@Column(name="CLASS_ID")
-	private Classes classes;
+	@Column(name="CDID")
+	private ClassDivision classDivision;
 	
 	public long getSid() {
 		return sid;
@@ -146,11 +148,11 @@ public class Student {
 	public void setCategory(String category) {
 		this.category = category;
 	}
-	public Classes getClasses() {
-		return classes;
+	public ClassDivision getClassDivision() {
+		return classDivision;
 	}
-	public void setClasses(Classes cl) {
-		this.classes = cl;
+	public void setClassDivision(ClassDivision classDivision) {
+		this.classDivision = classDivision;
 	}
 	@Override
 	public String toString() {
@@ -158,6 +160,6 @@ public class Student {
 				+ name + ", gender=" + gender + ", dob=" + dob + ", father=" + father + ", mother=" + mother
 				+ ", address=" + address + ", distance=" + distance + ", bus=" + bus + ", contact=" + contact
 				+ ", mobile=" + mobile + ", religion=" + religion + ", caste=" + caste + ", category=" + category
-				+ ", classes=" + classes + "]";
+				+ ", classDivision=" + classDivision + "]";
 	}
 }
