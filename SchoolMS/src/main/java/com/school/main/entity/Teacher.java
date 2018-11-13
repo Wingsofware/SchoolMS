@@ -1,34 +1,51 @@
 package com.school.main.entity;
 
+import java.util.Date;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
 public class Teacher {
 	
 	@Id
-	private int eid;
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="TID")
+	private int tid;
+	@Column(name="NAME")
 	private String name;
+	@Column(name="ADDRESS")
 	private String address;
-	private String huspare;
+	@Column(name="GUARDIAN")
+	private String guardian;
+	@Column(name="MOBILE")
 	private String mobile;
+	@Column(name="CONTACT")
 	private String contact;
+	@Column(name="EMAIL")
 	private String email;
+	@Column(name="AADHAR")
 	private String aadhar;
+	@Column(name="PAN")
+	private String pan;
+	@Column(name="SALARY")
 	private double salary;
-	private String doj;
-	private String dor;
-	private double hra;
-	private double pf;
-	private double medical;
-	private double allowance;
+	@Column(name="DOJ")
+	private Date doj;
+	@Column(name="DOR")
+	private Date dor;
 	//Termination T, Resignation R
+	@Column(name="TID")
 	private boolean status;
-	public int getEid() {
-		return eid;
+	
+	public int getTid() {
+		return tid;
 	}
-	public void setEid(int eid) {
-		this.eid = eid;
+	public void setTid(int tid) {
+		this.tid = tid;
 	}
 	public String getName() {
 		return name;
@@ -42,11 +59,11 @@ public class Teacher {
 	public void setAddress(String address) {
 		this.address = address;
 	}
-	public String getHuspare() {
-		return huspare;
+	public String getGuardian() {
+		return guardian;
 	}
-	public void setHuspare(String huspare) {
-		this.huspare = huspare;
+	public void setGuardian(String guardian) {
+		this.guardian = guardian;
 	}
 	public String getMobile() {
 		return mobile;
@@ -72,47 +89,29 @@ public class Teacher {
 	public void setAadhar(String aadhar) {
 		this.aadhar = aadhar;
 	}
+	public String getPan() {
+		return pan;
+	}
+	public void setPan(String pan) {
+		this.pan = pan;
+	}
 	public double getSalary() {
 		return salary;
 	}
 	public void setSalary(double salary) {
 		this.salary = salary;
 	}
-	public String getDoj() {
+	public Date getDoj() {
 		return doj;
 	}
-	public void setDoj(String doj) {
+	public void setDoj(Date doj) {
 		this.doj = doj;
 	}
-	public String getDor() {
+	public Date getDor() {
 		return dor;
 	}
-	public void setDor(String dor) {
+	public void setDor(Date dor) {
 		this.dor = dor;
-	}
-	public double getHra() {
-		return hra;
-	}
-	public void setHra(double hra) {
-		this.hra = hra;
-	}
-	public double getPf() {
-		return pf;
-	}
-	public void setPf(double pf) {
-		this.pf = pf;
-	}
-	public double getMedical() {
-		return medical;
-	}
-	public void setMedical(double medical) {
-		this.medical = medical;
-	}
-	public double getAllowance() {
-		return allowance;
-	}
-	public void setAllowance(double allowance) {
-		this.allowance = allowance;
 	}
 	public boolean isStatus() {
 		return status;
@@ -122,11 +121,9 @@ public class Teacher {
 	}
 	@Override
 	public String toString() {
-		return "Teacher [eid=" + eid + ", name=" + name + ", address=" + address + ", huspare=" + huspare + ", mobile="
-				+ mobile + ", contact=" + contact + ", email=" + email + ", aadhar=" + aadhar + ", salary=" + salary
-				+ ", doj=" + doj + ", dor=" + dor + ", hra=" + hra + ", pf=" + pf + ", medical=" + medical
-				+ ", allowance=" + allowance + ", status=" + status + "]";
+		return "Teacher [tid=" + tid + ", name=" + name + ", address=" + address + ", guardian=" + guardian
+				+ ", mobile=" + mobile + ", contact=" + contact + ", email=" + email + ", aadhar=" + aadhar + ", pan="
+				+ pan + ", salary=" + salary + ", doj=" + doj + ", dor=" + dor + ", status=" + status + "]";
 	}
-	
 	
 }
