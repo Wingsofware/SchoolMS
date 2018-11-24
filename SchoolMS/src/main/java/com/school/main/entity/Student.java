@@ -2,11 +2,13 @@ package com.school.main.entity;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
@@ -48,8 +50,8 @@ public class Student {
 	private String caste;
 	@Column(name="CATEGORY")
 	private String category;
-	@OneToOne
-	@Column(name="CDID")
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name="cdid", referencedColumnName="cdid")
 	private ClassDivision classDivision;
 	
 	public long getSid() {
@@ -162,4 +164,31 @@ public class Student {
 				+ ", mobile=" + mobile + ", religion=" + religion + ", caste=" + caste + ", category=" + category
 				+ ", classDivision=" + classDivision + "]";
 	}
+	public Student() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public Student(long sid, long admissionNo, Date admissionDate, String name, String gender, String dob,
+			String father, String mother, String address, double distance, boolean bus, String contact, String mobile,
+			String religion, String caste, String category, ClassDivision classDivision) {
+		super();
+		this.sid = sid;
+		this.admissionNo = admissionNo;
+		this.admissionDate = admissionDate;
+		this.name = name;
+		this.gender = gender;
+		this.dob = dob;
+		this.father = father;
+		this.mother = mother;
+		this.address = address;
+		this.distance = distance;
+		this.bus = bus;
+		this.contact = contact;
+		this.mobile = mobile;
+		this.religion = religion;
+		this.caste = caste;
+		this.category = category;
+		this.classDivision = classDivision;
+	}
+	
 }

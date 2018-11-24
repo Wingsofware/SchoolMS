@@ -50,8 +50,6 @@ public class MainController {
 	public ModelAndView addStudent(@RequestParam("classes_cname") String cname,
 			@RequestParam("classes_division") String division, @ModelAttribute Student student) {
 		ModelAndView mv = new ModelAndView();
-		student.setClassDivision(classDivisionRepository
-				.findByClassesInAndDivisionIn(classRepository.findByCname(cname), divisionRepository.getOne(division)));
 		studentRepository.save(student);
 		mv.addObject("student", student);
 		mv.setViewName("studentview");
@@ -82,7 +80,7 @@ public class MainController {
 	@RequestMapping("/getStudent")
 	public ModelAndView getStudent(@RequestParam("adno") long adno) {
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("student", (Student) studentRepository.findByAdmissionno(adno));
+		//mv.addObject("student", (Student) studentRepository.findByAdmissionno(adno));
 		mv.setViewName("studentview");
 		return mv;
 	}

@@ -38,9 +38,8 @@ public class Teacher {
 	@Column(name="DOR")
 	private Date dor;
 	//Termination T, Resignation R
-	@Column(name="TID")
+	@Column(name="STATUS")
 	private boolean status;
-	
 	public int getTid() {
 		return tid;
 	}
@@ -119,11 +118,32 @@ public class Teacher {
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
+	public Teacher(int tid, String name, String address, String guardian, String mobile, String contact, String email,
+			String aadhar, String pan, double salary, Date doj, Date dor, boolean status) {
+		super();
+		this.tid = tid;
+		this.name = name;
+		this.address = address;
+		this.guardian = guardian;
+		this.mobile = mobile;
+		this.contact = contact;
+		this.email = email;
+		this.aadhar = aadhar;
+		this.pan = pan;
+		this.salary = salary;
+		this.doj = doj;
+		this.dor = dor;
+		this.status = status;
+	}
 	@Override
 	public String toString() {
 		return "Teacher [tid=" + tid + ", name=" + name + ", address=" + address + ", guardian=" + guardian
 				+ ", mobile=" + mobile + ", contact=" + contact + ", email=" + email + ", aadhar=" + aadhar + ", pan="
 				+ pan + ", salary=" + salary + ", doj=" + doj + ", dor=" + dor + ", status=" + status + "]";
 	}
-	
+	public Teacher() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 }

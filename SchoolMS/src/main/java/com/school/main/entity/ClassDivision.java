@@ -5,9 +5,11 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonPropertyOrder;
+
+@JsonPropertyOrder(alphabetic=true)
 @Entity
 @Table(name="CLASS_DIV")
 public class ClassDivision implements Serializable{
@@ -17,12 +19,10 @@ public class ClassDivision implements Serializable{
 	@Id
 	@Column(name="CDID")
 	private int cdid;
-	@ManyToOne
 	@Column(name="CID")
-	private Classes classes;
-	@ManyToOne
+	private int cid;
 	@Column(name="DIVISION")
-	private Division division;
+	private String division;
 	
 	public int getCdid() {
 		return cdid;
@@ -30,21 +30,29 @@ public class ClassDivision implements Serializable{
 	public void setCdid(int cdid) {
 		this.cdid = cdid;
 	}
-	public Classes getClasses() {
-		return classes;
+	public int getCid() {
+		return cid;
 	}
-	public void setClasses(Classes classes) {
-		this.classes = classes;
+	public void setCid(int cid) {
+		this.cid = cid;
 	}
-	public Division getDivision() {
+	public String getDivision() {
 		return division;
 	}
-	public void setDivision(Division division) {
+	public void setDivision(String division) {
 		this.division = division;
 	}
 	@Override
 	public String toString() {
-		return "Class_Division [cdid=" + cdid + ", classes=" + classes + ", division=" + division + "]";
+		return "ClassDivision [cdid=" + cdid + ", cid=" + cid + ", division=" + division + "]";
 	}
+	public ClassDivision(int cdid, int cid, String division) {
+		super();
+		this.cdid = cdid;
+		this.cid = cid;
+		this.division = division;
+	}
+	public ClassDivision() {
 
+	}
 }
